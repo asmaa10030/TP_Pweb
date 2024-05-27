@@ -25,10 +25,9 @@
                 $row = mysqli_fetch_assoc($result);
 
                 if(is_array($row) && !empty($row)){
-                    $_SESSION['valid'] = $row['Email'];
-                    $_SESSION['username'] = $row['Username'];
-                    $_SESSION['age'] = $row['Age'];
-                    $_SESSION['id'] = $row['Id'];
+                    $_SESSION['valid'] = $row['email'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['id'] = $row['id'];
                 }else{
                     echo "<div class='message'>
                       <p>Wrong Username or Password</p>
