@@ -45,54 +45,61 @@ if ($todos_query->execute()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
     <title>To-Do List</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <img class="gif" src="img/tasks.gif" alt="Logo">
-        </div>
-        <ul class="sidebar-menu">
-            <li><a href="home.php">To-Do List</a></li>
-            <li><a href="dashboard.php">Tasks</a></li>
-            <li><a href="timer.php">Countdown Timer</a></li>
-            <li><a href="edit.php">Edit Profile</a></li>
-            <li><a href="php/logout.php">Logout</a></li>
-        </ul>
+<div class="sidebar">
+    <div class="logo">
+        <img class="gif" src="img/tasks.gif" alt="Logo">
     </div>
+    <ul class="sidebar-menu">
+        <li><a href="home.php"><i class="fas fa-list"></i> To-Do List</a></li>
+        <li><a href="dashboard.php"><i class="fas fa-tasks"></i> Tasks</a></li>
+        <li><a href="timer.php"><i class="fas fa-clock"></i> Countdown Timer</a></li>
+        <li><a href="edit.php"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
+        <li><a href="php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</div>
     <main>
-        <div class="show-todo-section">
-            <?php foreach ($todos as $todo) { ?>
-                <div class="todo-item">
-                    <span id="<?php echo $todo['id']; ?>" class="remove-to-do">x</span>
-                    <?php if($todo['checked']){ ?> 
-                        <input type="checkbox" class="check-box" data-todo-id ="<?php echo $todo['id']; ?>" checked />
-                        <h2 class="checked"><?php echo sanitize_input($todo['title']); ?></h2>
-                    <?php }else { ?>
-                        <input type="checkbox" data-todo-id ="<?php echo $todo['id']; ?>" class="check-box" />
-                        <h2><?php echo sanitize_input($todo['title']); ?></h2>
-                    <?php } ?>
-                    <br>
-                    <small>Description: <?php echo sanitize_input($todo['description']); ?></small>
-                    <br>
-                    <small>Created: <?php echo sanitize_input($todo['date_time']); ?></small> 
-                </div>
-            <?php } ?>
-            <div class="add-section">
+    <div class="show-todo-section">
+    <div class="todos-container">
+        <?php foreach ($todos as $todo) { ?>
+            <div class="todo-item">
+                <span id="<?php echo $todo['id']; ?>" class="remove-to-do">x</span>
+                <input type="checkbox" class="check-box" data-todo-id="<?php echo $todo['id']; ?>" <?php if($todo['checked']) echo 'checked'; ?> />
+                <h2 class="<?php if($todo['checked']) echo 'checked'; ?>"><?php echo sanitize_input($todo['title']); ?></h2>
+            </div>
+        <?php } ?>
+    </div>
+    <div class="add-section">
                 <form action="app/add.php" method="POST" autocomplete="off">
                     <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error'){ ?>
                         <input type="text" name="title" style="border-color: #ff6666" placeholder="This field is required" />
                         <input type="text" name="description" style="border-color: #ff6666" placeholder="description is required" />
                         <button type="submit">Add &nbsp; <span>&#43;</span></button>
                     <?php } else { ?>
-                        <input type="text" name="title" placeholder="What do you need to do?" />
-                        <input type="text" name="description" placeholder="Description" />
-                        <button type="submit" class="btn" style="text-align:center;"> <div style="display: block; align-items: center;">Add <i class="bx bx-plus-circle"></i></div></button>
+                        <input type="text" name="title" placeholder="Add a task" />
+                        <input type="text" name="description" placeholder="Description for more details" />
+                        <select name="category" class="todo-input">
+                        <option value="">Select Category</option>
+                        <option value="Shopping">Shopping</option>
+                       <option value="Study">Study</option>
+                       <option value="Work">Work</option>
+                       <option value="Gym">Gym</option>
+        
+                       </select>
+        
+    <button type="submit" class="btn" style="text-align:center; width:50%;">
+        <div style="display: block; align-items: center; ">Add <i class="bx bx-plus-circle"></i></div>
+    </button>
                     <?php } ?>
                 </form>
             </div>
-        </div>
+</div>
+
+
     </main>
     
     <script src="js/jquery-3.2.1.min.js"></script>

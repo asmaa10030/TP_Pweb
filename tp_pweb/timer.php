@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Countdown Timer</title>
     <style>
         #countdown {
@@ -27,30 +28,30 @@
             <img class="gif" src="img/tasks.gif" alt="Logo">
         </div>
         <ul class="sidebar-menu">
-            <li><a href="home.php">To-Do List</a></li>
-            <li><a href="dashboard.php">Tasks</a></li>
-            <li><a href="timer.php">Countdown Timer</a></li>
-            <li><a href="edit.php">Edit Profile</a></li>
-            <li><a href="php/logout.php">Logout</a></li>
-        </ul>
-    </div>
+        <li><a href="home.php"><i class="fas fa-list"></i> To-Do List</a></li>
+        <li><a href="dashboard.php"><i class="fas fa-tasks"></i> Tasks</a></li>
+        <li><a href="timer.php"><i class="fas fa-clock"></i> Countdown Timer</a></li>
+        <li><a href="edit.php"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
+        <li><a href="php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+ </div>
 <main>
     <div class="show-todo-section">
         <div class="add-section">
             <header>Countdown Timer</header>
             <form id="countdown-form">
                 <div class="field input">
-                    <label for="hours">Hours</label>
+                    <label for="hours" style="color:grey;">Hours</label>
                     <input type="number" name="hours" id="hours" min="0" required>
                 </div>
 
                 <div class="field input">
-                    <label for="minutes">Minutes</label>
+                    <label for="minutes" style="color:grey;">Minutes</label>
                     <input type="number" name="minutes" id="minutes" min="0" max="59" required>
                 </div>
 
                 <div class="field input">
-                    <label for="seconds">Seconds</label>
+                    <label for="seconds" style="color:grey;">Seconds</label>
                     <input type="number" name="seconds" id="seconds" min="0" max="59" required>
                 </div>
 

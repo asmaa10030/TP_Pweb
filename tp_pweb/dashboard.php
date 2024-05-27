@@ -22,7 +22,9 @@ function sanitize_input($data) {
 
 // Retrieve current user's ID from session
 $user_id = $_SESSION['id'];
-$todos_query = $con->prepare("SELECT todos.* FROM todos JOIN users ON todos.creater = users.id WHERE users.id = ?");
+
+// Prepare SQL statement
+$todos_query = $con->prepare("SELECT todos.*, categories.name AS category_name, categories.color AS category_color FROM todos LEFT JOIN categories ON todos.category_id = categories.id WHERE todos.creater = ?");
 $todos_query->bind_param('i', $user_id);
 
 // Execute prepared statement
@@ -44,6 +46,7 @@ if ($todos_query->execute()) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do List</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
     <div class="sidebar">
@@ -51,22 +54,23 @@ if ($todos_query->execute()) {
             <img class="gif" src="img/tasks.gif" alt="Logo">
         </div>
         <ul class="sidebar-menu">
-            <li><a href="home.php">To-Do List</a></li>
-            <li><a href="dashboard.php">Tasks</a></li>
-            <li><a href="timer.php">Countdown Timer</a></li>
-            <li><a href="edit.php">Edit Profile</a></li>
-            <li><a href="php/logout.php">Logout</a></li>
-        </ul>
+        <li><a href="home.php"><i class="fas fa-list"></i> To-Do List</a></li>
+        <li><a href="dashboard.php"><i class="fas fa-tasks"></i> Tasks</a></li>
+        <li><a href="timer.php"><i class="fas fa-clock"></i> Countdown Timer</a></li>
+        <li><a href="edit.php"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
+        <li><a href="php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
     </div>
     <main>
         <div class="table-container">
             <table class="custom-table">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Created</th>
-                        <th>Status</th>
+                        <th style="color:grey;">Title</th>
+                        <th  style="color:grey;">Description</th>
+                        <th  style="color:grey;">Category</th>
+                        <th  style="color:grey;">Created</th>
+                        <th  style="color:grey;">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,6 +79,7 @@ if ($todos_query->execute()) {
                         <tr>
                             <td><?php echo sanitize_input($todo['title']); ?></td>
                             <td><?php echo sanitize_input($todo['description']); ?></td>
+                            <td style="color: <?php echo $todo['category_color']; ?>"><?php echo sanitize_input($todo['category_name']); ?></td>
                             <td><?php echo sanitize_input($todo['date_time']); ?></td>
                             <td class="<?php echo $todo['checked'] ? 'done' : 'pending'; ?>"><?php echo $todo['checked'] ? 'Done' : 'Pending'; ?></td>
                         </tr>

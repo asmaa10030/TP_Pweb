@@ -24,20 +24,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do List</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="sidebar">
+<div class="sidebar">
         <div class="logo">
             <img class="gif" src="img/tasks.gif" alt="Logo">
         </div>
         <ul class="sidebar-menu">
-            <li><a href="home.php">To-Do List</a></li>
-            <li><a href="dashboard.php">Tasks</a></li>
-            <li><a href="timer.php">Countdown Timer</a></li>
-            <li><a href="edit.php">Edit Profile</a></li>
-            <li><a href="php/logout.php">Logout</a></li>
-        </ul>
-    </div>
+        <li><a href="home.php"><i class="fas fa-list"></i> To-Do List</a></li>
+        <li><a href="dashboard.php"><i class="fas fa-tasks"></i> Tasks</a></li>
+        <li><a href="timer.php"><i class="fas fa-clock"></i> Countdown Timer</a></li>
+        <li><a href="edit.php"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
+        <li><a href="php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</div>
     <main>
     <div class="show-todo-section">
         <div class="add-section">
@@ -71,12 +72,12 @@
             <header>Change Profile</header>
             <form action="" method="post">
                 <div class="field input">
-                    <label for="username">Username</label>
+                    <label for="username" style="color:grey;">Username</label>
                     <input type="text" name="username" id="username" value="<?php echo sanitize_input($res_Uname); ?>" autocomplete="off" required>
                 </div>
 
                 <div class="field input">
-                    <label for="email">Email</label>
+                    <label for="email" style="color:grey;">Email</label>
                     <input type="text" name="email" id="email" value="<?php echo sanitize_input($res_Email); ?>" autocomplete="off" required>
                 </div>
                 <div class="field">
