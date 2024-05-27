@@ -31,6 +31,7 @@ if ($todos_query->execute()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>To-Do List</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -73,7 +74,7 @@ if ($todos_query->execute()) {
                     <?php } else { ?>
                         <input type="text" name="title" placeholder="What do you need to do?" />
                         <input type="text" name="category" placeholder="Category" />
-                        <button type="submit">Add &nbsp; <span>&#43;</span></button>
+                        <button type="submit" class="btn" style="text-align:center;"> <div style="display: block; align-items: center;">Add <i class="bx bx-plus-circle"></i></div></button>
                     <?php } ?>
                 </form>
             </div>
