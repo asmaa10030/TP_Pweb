@@ -74,7 +74,7 @@ if ($todos_query->execute()) {
                         <h2><?php echo sanitize_input($todo['title']); ?></h2>
                     <?php } ?>
                     <br>
-                    <small>Description: <?php echo sanitize_input($todo['category']); ?></small>
+                    <small>Description: <?php echo sanitize_input($todo['description']); ?></small>
                     <br>
                     <small>Created: <?php echo sanitize_input($todo['date_time']); ?></small> 
                 </div>
@@ -83,11 +83,11 @@ if ($todos_query->execute()) {
                 <form action="app/add.php" method="POST" autocomplete="off">
                     <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error'){ ?>
                         <input type="text" name="title" style="border-color: #ff6666" placeholder="This field is required" />
-                        <input type="text" name="category" style="border-color: #ff6666" placeholder="Category is required" />
+                        <input type="text" name="description" style="border-color: #ff6666" placeholder="description is required" />
                         <button type="submit">Add &nbsp; <span>&#43;</span></button>
                     <?php } else { ?>
                         <input type="text" name="title" placeholder="What do you need to do?" />
-                        <input type="text" name="category" placeholder="Description" />
+                        <input type="text" name="description" placeholder="Description" />
                         <button type="submit" class="btn" style="text-align:center;"> <div style="display: block; align-items: center;">Add <i class="bx bx-plus-circle"></i></div></button>
                     <?php } ?>
                 </form>

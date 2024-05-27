@@ -74,7 +74,7 @@ if ($todos_query->execute()) {
                     <?php foreach ($todos as $todo) { ?>
                         <tr>
                             <td><?php echo sanitize_input($todo['title']); ?></td>
-                            <td><?php echo sanitize_input($todo['category']); ?></td>
+                            <td><?php echo sanitize_input($todo['description']); ?></td>
                             <td><?php echo sanitize_input($todo['date_time']); ?></td>
                             <td class="<?php echo $todo['checked'] ? 'done' : 'pending'; ?>"><?php echo $todo['checked'] ? 'Done' : 'Pending'; ?></td>
                         </tr>
