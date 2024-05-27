@@ -78,18 +78,27 @@ if ($todos_query->execute()) {
                     <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error'){ ?>
                         <input type="text" name="title" style="border-color: #ff6666" placeholder="This field is required" />
                         <input type="text" name="description" style="border-color: #ff6666" placeholder="description is required" />
-                        <button type="submit">Add &nbsp; <span>&#43;</span></button>
-                    <?php } else { ?>
+                        <select name="category" class="todo-input" style="display: block; margin: 0 auto;">
+                            <option value="">Select Category</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Study">Study</option>
+                            <option value="Work">Work</option>
+                            <option value="Gym">Gym</option>
+                        </select>
+
+                       <button type="submit" class="btn" style="text-align:center; width:50%;">
+                        <div style="display: block; align-items: center; ">Add <i class="bx bx-plus-circle"></i></div>
+                        </button>
+                        <?php } else { ?>
                         <input type="text" name="title" placeholder="Add a task" />
                         <input type="text" name="description" placeholder="Description for more details" />
-                        <select name="category" class="todo-input">
-                        <option value="">Select Category</option>
-                        <option value="Shopping">Shopping</option>
-                       <option value="Study">Study</option>
-                       <option value="Work">Work</option>
-                       <option value="Gym">Gym</option>
-        
-                       </select>
+                        <select name="category" class="todo-input" style="display: block; margin: 0 auto;">
+                            <option value="">Select Category</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Study">Study</option>
+                            <option value="Work">Work</option>
+                            <option value="Gym">Gym</option>
+                        </select>
         
     <button type="submit" class="btn" style="text-align:center; width:50%;">
         <div style="display: block; align-items: center; ">Add <i class="bx bx-plus-circle"></i></div>

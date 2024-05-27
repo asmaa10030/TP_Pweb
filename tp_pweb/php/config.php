@@ -1,5 +1,5 @@
 <?php 
  
- $con = mysqli_connect("localhost","root","","mydatabase") or die("Couldn't connect");
+ $con = mysqli_connect("localhost","root","","newdb") or die("Couldn't connect");
 
 ?>

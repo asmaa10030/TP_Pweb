@@ -43,12 +43,17 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['categ
         // Execute the prepared statement
         $res = $stmt->execute();
 
-        // Check if execution was successful
-        if($res){
-            header("Location: ../home.php?mess=success");
-        } else {
-            header("Location: ../home.php");
-        }
+if($res){
+    header("Location: ../home.php?mess=success");
+    exit();
+} else {
+    // Capture and log the error message
+    $error_message = $stmt->error;
+    error_log("Error executing SQL query: $error_message");
+
+    header("Location: ../home.php?mess=error");
+    exit();
+}
 
         // Close the database connection
         $con->close();

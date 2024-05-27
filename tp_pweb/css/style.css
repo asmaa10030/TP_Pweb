@@ -1,17 +1,25 @@
 /* Body */
+
 body {
-  background-color: #f5f7fa; /* Light background color */
-  color:white; /* Dark text color for readability */
-  font-family: 'Arial', sans-serif; /* Clean, modern font */
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease; /* Smooth background color transition */
-}
+  display: flex; /* Use flexbox to make the body a flex container */
+  justify-content: flex-start; /* Align items at the start of the flex container */
+  background-image: url('../img/background.png');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-attachment: fixed; /* Keep the background image fixed in place */
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Ensure the body takes up the full height of the viewport */
+  font-family: 'Poppins',sans-serif;  
+  color:rgb(105, 105, 105);
+  }
+  
   
   * {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-color
   }
   .to-do-list{
     background: transparent;
@@ -296,11 +304,11 @@ main .btn {
 
 /* Custom status colors */
 .custom-table .pending {
-  color: #ff0000; /* Red color for pending status */
+  color: #ff8080; /* Red color for pending status */
 }
 
 .custom-table .done {
-  color: #00ff00; /* Green color for done status */
+  color: #59b300; /* Green color for done status */
 }
 .todo-input {
   appearance: none;
@@ -334,8 +342,8 @@ main .btn {
   left: 0;
   width: 250px;
   height: 100%;
-  background: #2c3e50; /* Dark background for contrast */
-  color: #fff;
+  background: transparent; /* Dark background for contrast */
+  color: #808080;
   padding: 20px;
   border-radius: 15px; /* Rounded edges */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
@@ -365,10 +373,12 @@ main .btn {
 
 .sidebar-menu li {
   margin-bottom: 10px;
+  color: #808080;
+
 }
 
 .sidebar-menu li a {
-  color: white;
+  color: #808080;
   text-decoration: none;
   display: flex; /* Use flexbox for alignment */
   align-items: center; /* Center items vertically */
@@ -382,7 +392,7 @@ main .btn {
 }
 
 .sidebar-menu li a:hover {
-  background-color: #0CC0DF; /* Background color on hover */
+  background-color: #a9c4f5; /* Background color on hover */
   color: #fff; /* Text color on hover */
 }
 
@@ -393,7 +403,7 @@ a {
 
 /* Click effect */
 .sidebar-menu li a:active {
-  background-color: #0a9db3; /* Slightly darker color when clicked */
+  background-color: rgba(100, 149, 237, 0.808);
   transform: scale(0.95); /* Slight scale down effect */
   transition: transform 0.1s ease; /* Faster transition for click effect */
 }
