@@ -62,33 +62,35 @@ if ($todos_query->execute()) {
     </ul>
     </div>
     <main>
-        <div class="table-container">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th style="color:grey;">Title</th>
-                        <th  style="color:grey;">Description</th>
-                        <th  style="color:grey;">Category</th>
-                        <th  style="color:grey;">Created</th>
-                        <th  style="color:grey;">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- PHP loop to display todos -->
-                    <?php foreach ($todos as $todo) { ?>
-                        <tr>
-                            <td><?php echo sanitize_input($todo['title']); ?></td>
-                            <td><?php echo sanitize_input($todo['description']); ?></td>
-                            <td style="color: <?php echo $todo['category_color']; ?>"><?php echo sanitize_input($todo['category_name']); ?></td>
-                            <td><?php echo sanitize_input($todo['date_time']); ?></td>
-                            <td class="<?php echo $todo['checked'] ? 'done' : 'pending'; ?>"><?php echo $todo['checked'] ? 'Done' : 'Pending'; ?></td>
-                        </tr>
-                    <?php } ?>
-                    <!-- End of PHP loop -->
-                </tbody>
-            </table>
-        </div>
-    </main>
+    <div class="table-container">
+        <table class="custom-table"> <!-- Add class "custom-table" to apply the CSS styles -->
+            <thead>
+                <tr>
+                    <th style="color:grey;">Title</th>
+                    <th style="color:grey;">Description</th>
+                    <th style="color:grey;">Category</th>
+                    <th style="color:grey;">Created</th>
+                    <th style="color:grey;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+               <!-- PHP loop to display todos -->
+<?php foreach ($todos as $todo) { ?>
+    <tr>
+        <td><?php echo sanitize_input($todo['title']); ?></td>
+        <td><?php echo sanitize_input($todo['description']); ?></td>
+        <td style="background-color: <?php echo $todo['category_color']; ?>"><?php echo sanitize_input($todo['category_name']); ?></td>
+        <td><?php echo sanitize_input($todo['date_time']); ?></td>
+        <td class="<?php echo $todo['checked'] ? 'done' : 'pending'; ?>"><?php echo $todo['checked'] ? 'Done' : 'Pending'; ?></td>
+    </tr>
+<?php } ?>
+<!-- End of PHP loop -->
+
+            </tbody>
+        </table>
+    </div>
+</main>
+
     
     <script src="js/jquery-3.2.1.min.js"></script>
 
