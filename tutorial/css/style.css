@@ -1,0 +1,343 @@
+body {
+  display: flex; /* Use flexbox to make the body a flex container */
+  justify-content: flex-start; /* Align items at the start of the flex container */
+  background-image: url('../img/back.png');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-attachment: fixed; /* Keep the background image fixed in place */
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Ensure the body takes up the full height of the viewport */
+  font-family: 'Poppins',sans-serif;  
+  }
+  
+  * {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  .to-do-list{
+    background: transparent;
+    width: 300px; /* Set the width of the to-do list */
+    margin: 50px; /* Adjust margin as needed */
+    display: flex; /* Use flexbox to make the to-do list a flex container */
+    flex-direction: column; /* Arrange items vertically */
+  }
+  main{
+    background: transparent;
+    max-width: 500px;
+    width: 90%;
+    height: 500px;
+    margin: 30px auto;
+    border-radius: 10px;
+  }
+  
+  .add-section {
+    width: 100%;
+    background: transparent;
+    margin: 0px auto;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
+    border-radius: 5px;
+  }
+  .add-section:hover{
+    box-shadow: none;
+
+  }
+  
+  .add-section input {
+    display: block;
+    width: 95%;
+    height: 40px;
+    margin: 10px auto;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0px 5px;
+  }
+  
+  .add-section button {
+    display: block;
+    width: 95%;
+    height: 40px;
+    margin: 0px auto;
+    border: none;
+    outline: none;
+    background: #0088FF;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-section button:hover {
+    box-shadow: 0 2px 2px 0 #ccc, 0 2px 3px 0 #ccc;
+    opacity: 0.7;
+  }
+  
+  .add-section button span {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+  }
+  
+  #errorMes {
+    display: block;
+    background: #f2dede;
+    width: 95%;
+    margin: 0px auto;
+    color: rgb(139, 19, 19);
+    padding: 10px;
+    height: 35px;
+  }
+  
+  .show-todo-section {
+    width: 100%;
+    background: transparent;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  }
+  
+
+  
+  .todo-item {
+    width: 95%;
+    margin: 10px auto;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
+    border-radius: 5px;
+  }
+  /* Hover effect */
+.todo-item:hover {
+  box-shadow: none;
+}
+  
+  .todo-item h2 {
+    display: inline-block;
+    padding: 5px 0px;
+    font-size: 17px;
+    font-family: sans-serif;
+    color: #555;
+  }
+  
+  .todo-item small {
+    display: block;
+    width: 100%;
+    padding: 5px 0px;
+    color: #888;
+    padding-left: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+  }
+  
+  .remove-to-do {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    font-family: sans-serif;
+    color: rgb(139, 97, 93);
+    text-decoration: none;
+    text-align: right;
+    padding: 0px 5px 8px 0px;
+    border-radius: 50%;
+    transition: background 1s;
+    cursor: pointer;
+  }
+  
+  .remove-to-do:hover {
+    background: rgb(139, 97, 93);
+    color: #fff;
+  }
+  
+  .checked {
+    color: #999 !important;
+    text-decoration: line-through;
+  }
+  
+  .todo-item input {
+    margin: 0px 5px;
+  }
+  
+  .empty {
+    font-family: sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: #cccc;
+  }
+ .add-section{
+    width: 450px;
+    margin: 0px 10px;
+}
+
+body main .show-todo-section .add-section header{
+  font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 10px;
+}
+ .add-section form .field{
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+
+}
+ .add-section form .input input{
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+main .btn{
+    height: 35px;
+    background: rgba(76,68,182,0.808);
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s;
+    margin-top: 10px;
+    padding: 0px 10px;
+}
+.btn:hover{
+    opacity: 0.82;
+}
+.submit{
+    width: 100%;
+}
+.links{
+    margin-bottom: 15px;
+}
+
+
+ /* Table styles */
+ /* Center the table container */
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.custom-table {
+  width: 100%;
+  margin-top: 50px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 8px;
+  border: none;
+}
+
+/* Header row styles */
+.custom-table th {
+  background-color: transparent;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+/* Data row styles */
+.custom-table td {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+}
+
+/* Sale percentage styles */
+.custom-table .text-danger {
+  color: #ff0000;
+}
+
+/* Arrow styles */
+.custom-table .arrow-down::before {
+  content: '\25BC';
+  color: #ff0000;
+  margin-left: 3px;
+}
+
+/* Status badge styles */
+.custom-table .badge {
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+}
+
+/* Badge colors */
+.custom-table .badge-danger {
+  background-color: #ff0000;
+}
+
+/* Hover effect */
+.custom-table:hover {
+  box-shadow: none;
+}
+
+/* Custom status colors */
+.custom-table .pending {
+  color: #ff0000; /* Red color for pending status */
+}
+
+.custom-table .done {
+  color: #00ff00; /* Green color for done status */
+}
+
+/* side bar */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #ECF7FE;
+    color: #fff;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.gif {
+  max-width: 100%; /* Ensure the image does not exceed the width of its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure the image is displayed as a block element */
+  margin: 0 auto; /* Center the image horizontally */
+  padding: 10px; /* Add some padding for spacing */
+}
+
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+    color: black ;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar-menu li a:hover {
+    color: #0CC0DF;
+}
