@@ -18,33 +18,33 @@
             $username = $_POST['username'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            $confirm_password = $_POST['confirm_password']; // New line added for confirm password
 
-         //verifying the unique email
+            // Check if passwords match
+            if($password !== $confirm_password) {
+                echo "<div class='message'>
+                          <p>Passwords do not match!</p>
+                      </div> <br>";
+                echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+                exit(); // Exit script if passwords do not match
+            }
 
-         $verify_query = mysqli_query($con,"SELECT Email FROM users WHERE Email='$email'");
-
-         if(mysqli_num_rows($verify_query) !=0 ){
-            echo "<div class='message'>
-                      <p>This email is used, Try another One Please!</p>
-                  </div> <br>";
-            echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
-         }
-         else{
-
-            mysqli_query($con,"INSERT INTO users(Username,Email,Password) VALUES('$username','$email','$password')") or die("Erroe Occured");
-
-            echo "<div class='message'>
-                      <p>Registration successfully!</p>
-                  </div> <br>";
-            echo "<a href='index.php'><button class='btn'>Login Now</button>";
-         
-
-         }
-
-         }else{
-         
+            // Verifying the unique email
+            $verify_query = mysqli_query($con,"SELECT Email FROM users WHERE Email='$email'");
+            if(mysqli_num_rows($verify_query) != 0 ){
+                echo "<div class='message'>
+                          <p>This email is used, Try another One Please!</p>
+                      </div> <br>";
+                echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+            } else {
+                mysqli_query($con,"INSERT INTO users(Username,Email,Password) VALUES('$username','$email','$password')") or die("Error Occurred");
+                echo "<div class='message'>
+                          <p>Registration successful!</p>
+                      </div> <br>";
+                echo "<a href='index.php'><button class='btn'>Login Now</button>";
+            }
+         } else {
         ?>
-
             <header>Sign Up</header>
             <form action="" method="post">
                 <div class="field input">
@@ -54,7 +54,7 @@
 
                 <div class="field input">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" autocomplete="off" required>
+                    <input type="email" name="email" id="email" autocomplete="off" required>
                 </div>
 
                 <div class="field input">
@@ -62,9 +62,13 @@
                     <input type="password" name="password" id="password" autocomplete="off" required>
                 </div>
 
+                <div class="field input">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" autocomplete="off" required>
+                </div>
+
                 <div class="field">
-                    
-                    <input type="submit" class="btn" name="submit" value="Register" required>
+                    <input type="submit" class="btn" name="submit" value="Register">
                 </div>
                 <div class="links">
                     Already a member? <a href="index.php">Sign In</a>

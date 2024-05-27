@@ -22,10 +22,11 @@
             <img class="gif" src="img/tasks.gif" alt="Logo">
         </div>
         <ul class="sidebar-menu">
-            <li><a href="home.php">To-Do</a></li>
+            <li><a href="home.php">To-Do List</a></li>
             <li><a href="dashboard.php">Tasks</a></li>
-            <li><a href="edit.php">edit profile</a></li>
-            <li><a href="php/logout.php">logout</a></li>
+            <li><a href="timer.php">Countdown Timer</a></li>
+            <li><a href="edit.php">Edit Profile</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </div>
     <main>
