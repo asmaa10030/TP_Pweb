@@ -9,8 +9,21 @@ if (!isset($_SESSION['valid'])) {
 
 require 'php/config.php'; // Include database connection file
 
+// Function to sanitize input data
+function sanitize_input($data) {
+    // Remove leading and trailing whitespace
+    $data = trim($data);
+    // Remove backslashes
+    $data = stripslashes($data);
+    // Convert special characters to HTML entities
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 // Retrieve current user's ID from session
 $user_id = $_SESSION['id'];
+
+// Prepare SQL statement
 $todos_query = $con->prepare("SELECT todos.* FROM todos JOIN users ON todos.creater = users.id WHERE users.id = ?");
 $todos_query->bind_param('i', $user_id);
 
@@ -55,15 +68,15 @@ if ($todos_query->execute()) {
                     <span id="<?php echo $todo['id']; ?>" class="remove-to-do">x</span>
                     <?php if($todo['checked']){ ?> 
                         <input type="checkbox" class="check-box" data-todo-id ="<?php echo $todo['id']; ?>" checked />
-                        <h2 class="checked"><?php echo $todo['title'] ?></h2>
+                        <h2 class="checked"><?php echo sanitize_input($todo['title']); ?></h2>
                     <?php }else { ?>
                         <input type="checkbox" data-todo-id ="<?php echo $todo['id']; ?>" class="check-box" />
-                        <h2><?php echo $todo['title'] ?></h2>
+                        <h2><?php echo sanitize_input($todo['title']); ?></h2>
                     <?php } ?>
                     <br>
-                    <small>Category: <?php echo htmlspecialchars($todo['category']); ?></small>
+                    <small>Description: <?php echo sanitize_input($todo['category']); ?></small>
                     <br>
-                    <small>Created: <?php echo $todo['date_time'] ?></small> 
+                    <small>Created: <?php echo sanitize_input($todo['date_time']); ?></small> 
                 </div>
             <?php } ?>
             <div class="add-section">
@@ -74,7 +87,7 @@ if ($todos_query->execute()) {
                         <button type="submit">Add &nbsp; <span>&#43;</span></button>
                     <?php } else { ?>
                         <input type="text" name="title" placeholder="What do you need to do?" />
-                        <input type="text" name="category" placeholder="Category" />
+                        <input type="text" name="category" placeholder="Description" />
                         <button type="submit" class="btn" style="text-align:center;"> <div style="display: block; align-items: center;">Add <i class="bx bx-plus-circle"></i></div></button>
                     <?php } ?>
                 </form>

@@ -5,6 +5,15 @@
    if(!isset($_SESSION['valid'])){
     header("Location: index.php");
    }
+   function sanitize_input($data) {
+    // Remove leading and trailing whitespace
+    $data = trim($data);
+    // Remove backslashes
+    $data = stripslashes($data);
+    // Convert special characters to HTML entities
+    $data = htmlspecialchars($data);
+    return $data;
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,12 +72,12 @@
             <form action="" method="post">
                 <div class="field input">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" value="<?php echo $res_Uname; ?>" autocomplete="off" required>
+                    <input type="text" name="username" id="username" value="<?php echo sanitize_input($res_Uname); ?>" autocomplete="off" required>
                 </div>
 
                 <div class="field input">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<?php echo $res_Email; ?>" autocomplete="off" required>
+                    <input type="text" name="email" id="email" value="<?php echo sanitize_input($res_Email); ?>" autocomplete="off" required>
                 </div>
                 <div class="field">
                     

@@ -9,6 +9,17 @@ if (!isset($_SESSION['valid'])) {
 
 require 'php/config.php'; // Include database connection file
 
+// Function to sanitize input data
+function sanitize_input($data) {
+    // Remove leading and trailing whitespace
+    $data = trim($data);
+    // Remove backslashes
+    $data = stripslashes($data);
+    // Convert special characters to HTML entities
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 // Retrieve current user's ID from session
 $user_id = $_SESSION['id'];
 $todos_query = $con->prepare("SELECT todos.* FROM todos JOIN users ON todos.creater = users.id WHERE users.id = ?");
@@ -49,30 +60,29 @@ if ($todos_query->execute()) {
     </div>
     <main>
         <div class="table-container">
-        <table class="custom-table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Created</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- PHP loop to display todos -->
-        <?php foreach ($todos as $todo) { ?>
-            <tr>
-                <td><?php echo $todo['title']; ?></td>
-                <td><?php echo htmlspecialchars($todo['category']); ?></td>
-                <td><?php echo $todo['date_time']; ?></td>
-                <td class="<?php echo $todo['checked'] ? 'done' : 'pending'; ?>"><?php echo $todo['checked'] ? 'Done' : 'Pending'; ?></td>
-            </tr>
-        <?php } ?>
-        <!-- End of PHP loop -->
-    </tbody>
-        </table>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Created</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- PHP loop to display todos -->
+                    <?php foreach ($todos as $todo) { ?>
+                        <tr>
+                            <td><?php echo sanitize_input($todo['title']); ?></td>
+                            <td><?php echo sanitize_input($todo['category']); ?></td>
+                            <td><?php echo sanitize_input($todo['date_time']); ?></td>
+                            <td class="<?php echo $todo['checked'] ? 'done' : 'pending'; ?>"><?php echo $todo['checked'] ? 'Done' : 'Pending'; ?></td>
+                        </tr>
+                    <?php } ?>
+                    <!-- End of PHP loop -->
+                </tbody>
+            </table>
         </div>
-        
     </main>
     
     <script src="js/jquery-3.2.1.min.js"></script>
